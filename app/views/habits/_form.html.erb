@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_field :start_date %>
+    <%= form.date_field :start_date, { value: Date.today } %>
   </div>
 
   <div>
@@ -31,10 +31,7 @@
     <%= form.date_field :end_date %>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
-  </div>
+  <%= form.hidden_field :user_id, { :value => current_user.id } %>
 
   <div>
     <%= form.submit %>
