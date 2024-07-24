@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :habit_id, style: "display: block" %>
-    <%= form.number_field :habit_id %>
-  </div>
+  <%= form.hidden_field :habit_id, value: params[:habit_id] %>
 
   <div>
     <%= form.label :entry_date, style: "display: block" %>
