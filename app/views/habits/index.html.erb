@@ -3,7 +3,7 @@
 <h1>Habits</h1>
 
 <div id="habits">
-  <% @habits.each do |habit| %>
+  <% current_user.habits.each do |habit| %>
     <%= render habit %>
     <p>
       <%= link_to "Show this habit", habit %>
