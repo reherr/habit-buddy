@@ -21,7 +21,6 @@ task({ :sample_data => :environment }) do
       habit.name = Faker::Hobby.activity
       habit.description = Faker::Lorem.sentence
       habit.start_date = Date.today - rand(1..10).days
-      habit.end_date = Date.today + rand(10..20).days
       habit.user_id = user.id
       habit.save
 
