@@ -11,4 +11,5 @@
 #
 class HabitEntry < ApplicationRecord
   belongs_to :habit, required: true, class_name: "Habit", foreign_key: "habit_id"
+  
 end
