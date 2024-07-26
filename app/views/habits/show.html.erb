@@ -2,6 +2,10 @@
 
 <%= render @habit %>
 
+  <div class="habit-streak">
+    <strong>Current Streak:</strong> <%= @habit.current_streak %> days
+  </div>
+
 <div>
   <%= link_to "Edit this habit", edit_habit_path(@habit) %> |
   <%= link_to "Back to habits", habits_path %>

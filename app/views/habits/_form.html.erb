@@ -26,11 +26,6 @@
     <%= form.date_field :start_date, { value: Date.today } %>
   </div>
 
-  <div>
-    <%= form.label :end_date, style: "display: block" %>
-    <%= form.date_field :end_date %>
-  </div>
-
   <%= form.hidden_field :user_id, { :value => current_user.id } %>
 
   <div>
