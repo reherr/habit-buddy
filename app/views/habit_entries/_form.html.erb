@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :habit_id, value: params[:habit_id] %>
 
   <div>
@@ -22,6 +23,11 @@
     <%= form.label :status, style: "display: block" %>
     <%= form.check_box :status %>
   </div>
+
+ <div>
+  <%= form.label :note %>
+  <%= form.text_area :note, rows: 3 %>
+</div>
 
   <div>
     <%= form.submit %>
