@@ -26,7 +26,7 @@ class HabitEntry < ApplicationRecord
   validates :note, length: { maximum: 500 }
 
   def self.ransackable_attributes(auth_object = nil)
-    ["entry_date", "habit_id"]
+    ["entry_date"]
   end
   
 end

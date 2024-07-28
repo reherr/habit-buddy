@@ -16,7 +16,7 @@
 
 <br>
 
-<%= search_form_for @q do |f| %>
+<%= search_form_for @q, url: habit_path(@habit), method: :get do |f| %>
   <p>Narrow results:</p>
 
   <div>
@@ -24,14 +24,9 @@
     <%= f.text_field :entry_date_eq, :placeholder => "Enter a date" %>
   </div>
 
-  <div>
-    <%= f.label :habit_id_eq, "Enter ID" %>
-    <%= f.text_field :habit_id_eq, :placeholder => "Enter ID" %>
-  </div>
-
   <%= f.submit :class => "btn btn-primary btn-block" %>
   
-  <%= link_to 'Clear filters', habit_entries_path %>
+  <%= link_to 'Clear filters', habit_path(@habit) %>
 
 <% end %>
 
