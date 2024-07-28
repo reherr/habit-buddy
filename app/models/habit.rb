@@ -22,4 +22,5 @@ class Habit < ApplicationRecord
     end
     streak
   end
+
 end

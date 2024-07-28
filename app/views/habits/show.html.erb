@@ -13,3 +13,28 @@
 
   <%= button_to "Destroy this habit", @habit, method: :delete %>
 </div>
+
+<br>
+
+<%= search_form_for @q, url: habit_path(@habit), method: :get do |f| %>
+  <p>Narrow results:</p>
+
+  <div>
+    <%= f.label :entry_date_eq, "Enter date" %>
+    <%= f.text_field :entry_date_eq, :placeholder => "Enter a date" %>
+  </div>
+
+  <%= f.submit :class => "btn btn-primary btn-block" %>
+  
+  <%= link_to 'Clear filters', habit_path(@habit) %>
+
+<% end %>
+
+<br>
+
+<h2>Entries</h2>
+<ul>
+  <% @habit_entries.each do |entry| %>
+    <%= render entry %>
+  <% end %>
+</ul>

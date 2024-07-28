@@ -24,5 +24,9 @@ class HabitEntry < ApplicationRecord
   belongs_to :habit, required: true, class_name: "Habit", foreign_key: "habit_id"
 
   validates :note, length: { maximum: 500 }
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["entry_date"]
+  end
   
 end

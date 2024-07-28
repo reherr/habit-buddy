@@ -8,6 +8,9 @@ class HabitsController < ApplicationController
 
   # GET /habits/1 or /habits/1.json
   def show
+    @habit = Habit.find(params[:id])
+    @q = @habit.habit_entries.ransack(params[:q])
+    @habit_entries = @q.result
   end
 
   # GET /habits/new
