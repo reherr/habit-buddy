@@ -3,11 +3,15 @@ class HabitEntriesController < ApplicationController
 
   # GET /habit_entries or /habit_entries.json
   def index
-    @habit_entries = HabitEntry.all
+    # @habit_entries = HabitEntry.all
+    @q = HabitEntry.ransack(params[:q])
+    @habit_entries = @q.result
   end
 
   # GET /habit_entries/1 or /habit_entries/1.json
   def show
+    @q = HabitEntry.ransack(params[:q])
+    @habit_entries = @q.result
   end
 
   # GET /habit_entries/new

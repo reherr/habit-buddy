@@ -8,6 +8,8 @@ class HabitsController < ApplicationController
 
   # GET /habits/1 or /habits/1.json
   def show
+    @habit = Habit.find(params[:id])
+    @habit_entries = @habit.habit_entries
   end
 
   # GET /habits/new
