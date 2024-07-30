@@ -33,7 +33,7 @@ class HabitEntriesController < ApplicationController
     # @habit = Habit.where({ :id => habit_id }).first
     @habit_entry = HabitEntry.new(habit_entry_params)
 
-    respond_to do |format|
+      respond_to do |format|
       if @habit_entry.save
         format.html { redirect_to habit_entry_url(@habit_entry), notice: "Nice! Keep it up." }
         format.json { render :show, status: :created, location: @habit_entry }
