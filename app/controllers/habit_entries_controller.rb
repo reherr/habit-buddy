@@ -4,6 +4,7 @@ class HabitEntriesController < ApplicationController
   # GET /habit_entries or /habit_entries.json
   def index
     @habit_entries = HabitEntry.all
+    @habit = Habit.all.sample
   end
 
   # GET /habit_entries/1 or /habit_entries/1.json
@@ -29,8 +30,8 @@ class HabitEntriesController < ApplicationController
 
   # POST /habit_entries or /habit_entries.json
   def create
-    # habit_id = params.fetch("habit_id")
-    # @habit = Habit.where({ :id => habit_id }).first
+    habit_id = params.fetch("habit_entry").fetch("habit_id")
+    @habit = Habit.where({ :id => habit_id }).first
     @habit_entry = HabitEntry.new(habit_entry_params)
 
       respond_to do |format|
