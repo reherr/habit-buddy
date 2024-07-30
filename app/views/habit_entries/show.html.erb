@@ -4,7 +4,7 @@
 
 <div>
   <%= link_to "Edit this habit entry", edit_habit_entry_path(@habit_entry) %> |
-  <%= link_to "Back to habit entries", habit_entries_path %>
+  <%= link_to "Back to habit", habit_path(@habit) %>
 
   <%= button_to "Destroy this habit entry", @habit_entry, method: :delete %>
 </div>

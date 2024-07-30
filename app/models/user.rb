@@ -22,6 +22,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many  :habits, class_name: "Habit", foreign_key: "user_id", dependent: :destroy
   has_many :habit_entries, class_name: "HabitEntry", foreign_key: "user_id", dependent: :destroy
+  has_many  :habits, through: :habit_entries, source: :habit #class_name: "Habit", dependent: :destroy
 end

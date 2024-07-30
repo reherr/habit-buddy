@@ -25,7 +25,7 @@ class HabitEntry < ApplicationRecord
 
   validates :note, length: { maximum: 500 }
 
-  validates :entry_date, uniqueness: { scope: :habit_id, message: "You can only have one entry per day per habit" }
+  validate :entry_date_cannot_be_in_the_future
 
   before_validation :set_default_entry_date, on: :create
 
@@ -37,6 +37,12 @@ class HabitEntry < ApplicationRecord
 
   def set_default_entry_date
     self.entry_date ||= Date.today
+  end
+
+  def entry_date_cannot_be_in_the_future
+    if entry_date.present? && entry_date > Date.today
+      errors.add(:entry_date, "cannot be in the future")
+    end
   end
   
 end

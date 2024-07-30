@@ -8,6 +8,8 @@ class HabitEntriesController < ApplicationController
 
   # GET /habit_entries/1 or /habit_entries/1.json
   def show
+    habit_id = @habit_entry.habit_id
+    @habit = Habit.where({ :id => habit_id }).first
   end
 
   # GET /habit_entries/new
@@ -21,6 +23,8 @@ class HabitEntriesController < ApplicationController
 
   # GET /habit_entries/1/edit
   def edit
+    habit_id = @habit_entry.habit_id
+    @habit = Habit.where({ :id => habit_id }).first
   end
 
   # POST /habit_entries or /habit_entries.json
@@ -42,6 +46,8 @@ class HabitEntriesController < ApplicationController
 
   # PATCH/PUT /habit_entries/1 or /habit_entries/1.json
   def update
+    @habit_entry = HabitEntry.find(params[:id])
+
     respond_to do |format|
       if @habit_entry.update(habit_entry_params)
         format.html { redirect_to habit_entry_url(@habit_entry), notice: "Habit entry was successfully updated." }
