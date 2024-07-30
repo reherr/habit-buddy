@@ -12,9 +12,11 @@ class HabitEntriesController < ApplicationController
 
   # GET /habit_entries/new
   def new
-    @habit_entry = HabitEntry.new
-    habit_id = params.fetch("habit_id")
-    @habit = Habit.where({ :id => habit_id }).first
+    # @habit_entry = HabitEntry.new
+    # habit_id = params.fetch("habit_id")
+    @habit_id = params[:habit_id]
+    @habit_entry = HabitEntry.new(habit_id: @habit_id)
+    @habit = Habit.where({ :id => @habit_id }).first
   end
 
   # GET /habit_entries/1/edit
@@ -23,8 +25,8 @@ class HabitEntriesController < ApplicationController
 
   # POST /habit_entries or /habit_entries.json
   def create
-    habit_id = params.fetch("habit_entry").fetch("habit_id")
-    @habit = Habit.where({ :id => habit_id }).first
+    # habit_id = params.fetch("habit_id")
+    # @habit = Habit.where({ :id => habit_id }).first
     @habit_entry = HabitEntry.new(habit_entry_params)
 
     respond_to do |format|

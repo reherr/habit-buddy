@@ -25,8 +25,18 @@ class HabitEntry < ApplicationRecord
 
   validates :note, length: { maximum: 500 }
 
+  validates :entry_date, uniqueness: { scope: :habit_id, message: "You can only have one entry per day per habit" }
+
+  before_validation :set_default_entry_date, on: :create
+
   def self.ransackable_attributes(auth_object = nil)
     ["entry_date"]
+  end
+
+  private
+
+  def set_default_entry_date
+    self.entry_date ||= Date.today
   end
   
 end

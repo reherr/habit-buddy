@@ -36,5 +36,6 @@
 <ul>
   <% @habit_entries.each do |entry| %>
     <%= render entry %>
+    <%= link_to 'Edit this entry', edit_habit_entry_path(entry.id) %>
   <% end %>
 </ul>

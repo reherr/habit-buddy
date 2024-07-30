@@ -24,3 +24,4 @@ class Habit < ApplicationRecord
   end
 
 end
+
