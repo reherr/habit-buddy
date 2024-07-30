@@ -1,12 +1,12 @@
 <div id="<%= dom_id habit_entry %>">
   <p>
     <strong>Habit:</strong>
-    <%= habit_entry.habit_id %>
+    <%= @habit.name %>
   </p>
 
   <p>
     <strong>Entry date:</strong>
-    <%= habit_entry.entry_date %>
+    <%= habit_entry.entry_date.strftime("%m-%d-%Y") %>
   </p>
 
   <p>
