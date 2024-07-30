@@ -5,6 +5,7 @@ class HabitsController < ApplicationController
   def index
     user_id = current_user.id
     @habits = Habit.where(user_id: user_id).all
+    # @habits = current_user.habits
   end
 
   # GET /habits/1 or /habits/1.json

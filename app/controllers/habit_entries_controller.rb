@@ -36,7 +36,7 @@ class HabitEntriesController < ApplicationController
 
       respond_to do |format|
       if @habit_entry.save
-        format.html { redirect_to habit_entry_url(@habit_entry), notice: "Nice! Keep it up." }
+        format.html { redirect_to habit_path(@habit_entry.habit), notice: "Nice! Keep it up." }
         format.json { render :show, status: :created, location: @habit_entry }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class HabitEntriesController < ApplicationController
 
     respond_to do |format|
       if @habit_entry.update(habit_entry_params)
-        format.html { redirect_to habit_entry_url(@habit_entry), notice: "Habit entry was successfully updated." }
+        format.html { redirect_to habit_path(@habit_entry.habit), notice: "Habit entry was successfully updated." }
         format.json { render :show, status: :ok, location: @habit_entry }
       else
         format.html { render :edit, status: :unprocessable_entity }
