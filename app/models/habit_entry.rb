@@ -27,6 +27,8 @@ class HabitEntry < ApplicationRecord
 
   validate :entry_date_cannot_be_in_the_future
 
+  validate :unique_entry_per_day_per_habit, if: -> { new_record? || entry_date_changed? }
+
   before_validation :set_default_entry_date, on: :create
 
   def self.ransackable_attributes(auth_object = nil)
@@ -42,6 +44,12 @@ class HabitEntry < ApplicationRecord
   def entry_date_cannot_be_in_the_future
     if entry_date.present? && entry_date > Date.today
       errors.add(:entry_date, "cannot be in the future")
+    end
+  end
+
+  def unique_entry_per_day_per_habit
+    if HabitEntry.where.not(id: id).where(entry_date: entry_date, habit_id: habit_id).exists?
+      errors.add(:entry_date, "You can only have one entry per day per habit")
     end
   end
   

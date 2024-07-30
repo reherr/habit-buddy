@@ -20,6 +20,7 @@ class HabitsController < ApplicationController
 
   # GET /habits/1/edit
   def edit
+    @habit = Habit.find(params[:id])
   end
 
   # POST /habits or /habits.json
