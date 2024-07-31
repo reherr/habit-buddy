@@ -1,6 +1,86 @@
-<h1>HabitBuddy</h1>
+  <section class="d-flex align-items-center">
 
-<h2>Trust the process. Celebrate your progress.</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
+          <div>
+            <h1>HabitBuddy</h1>
+            <h2 class="text-body">Trust the process. Celebrate your progress.</h2>
+            <%= link_to 'Sign up today!', new_user_registration_path, class: 'btn btn-dark mt-4' %>
+          </div>
+        </div>
+        <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2" data-aos="fade-up">
+          <img src="<%= asset_path 'cuterhippo-chatbubble.png' %>" class="img-fluid">
+        </div>
+      </div>
+    </div>
 
+  </section>
 
-<%= link_to 'Sign up today!', new_user_registration_path %>
+  <hr>
+
+    <section>
+  <div class="container">
+
+    <div class="heading mt-5">
+      <h2>How to use HabitBuddy</h2>
+      <h4 class="text-body">It is actually pretty simple.</h4>
+    </div>
+
+    <div class="row no-gutters mb-5">
+
+      <div class="col-lg-4 box">
+        <img src="<%= asset_path 'number-one.png' %>" alt="number-one">
+        <h4 class="text-primary">Create an Account</h4>
+      </div>
+
+      <div class="col-lg-4 box featured">
+        <img src="<%= asset_path 'number-two.png' %>" alt="number-two">
+        <h4 class="text-primary">Add your Habits</h4>
+      </div>
+
+      <div class="col-lg-4 box">
+        <img src="<%= asset_path 'number-three.png' %>" alt="number-three">
+        <h4 class="text-primary">Record Your Progress</h4>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<hr>
+
+<section>
+  <div class="container">
+
+    <div class="testimonials-header mt-5">
+      <h2>Testimonials</h2>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial-item">
+        <img src="<%= asset_path 'peep-one.png'%>" alt="Saul Goodman">
+        <h3>Araceli H.</h3>
+        <h4 class="text-primary">Ceo &amp; Founder</h4>
+        <p>
+          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            I've tried many habit tracker apps, but HabitBuddy stands out with its clean design and intuitive interface. The streak feature give me a clear picture of my progress!
+          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+        </p>
+      </div>
+
+      <div class="testimonial-item">
+        <img src="<%= asset_path 'peep-two.png'%>" alt="Sara Wilsson">
+        <h3>Lorenzo H.P.</h3>
+        <h4 class="text-primary">Student</h4>
+        <p>
+          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+          As someone who struggles with consistency, HabitBuddy has been a game-changer. I appreciate how it celebrates even the smallest amount of progress to keep people motivated. It's an essential tool for anyone serious about self-improvement.
+          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>

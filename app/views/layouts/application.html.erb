@@ -6,25 +6,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-        <%= render partial: "shared/cdn_assets" %>
+    <%= render partial: "shared/cdn_assets" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-<div class="container-fluid">
+    <div>
       <%= render partial: "shared/navbar" %>
-</div>
-<div class="container">
-        <% if notice.present? %>
+    </div>
+    <div class="container-fluid">
+      <% if notice.present? %>
         <%= render partial: "shared/flash", locals: { message: notice, css_class: "success" } %>
       <% end %>
-      
+
       <% if alert.present? %>
         <%= render partial: "shared/flash", locals: { message: alert, css_class: "danger" } %>
       <% end %>
-  <%= yield %>
-</div>
+      <%= yield %>
+    </div>
   </body>
 </html>

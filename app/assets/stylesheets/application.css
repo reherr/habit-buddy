@@ -13,3 +13,73 @@
  *= require_tree .
  *= require_self
  */
+
+ /* Center the heading */
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: -100px;
+}
+
+/* Center the content in each box */
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.box img {
+  margin-bottom: -20px; /* Adjust as needed for spacing */
+}
+
+.box h4 {
+  margin-top: -75px; /* Adjust as needed for spacing */
+}
+
+/* Center the section header */
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Style the testimonials container and items */
+.testimonials {
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  flex-wrap: wrap;
+  gap: 200px; /* Space between items */
+}
+
+.testimonial-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 300px; /* Adjust the max-width as needed */
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Optional for styling */
+  border-radius: 10px; /* Optional for styling */
+}
+
+/* Style the avatar images */
+.testimonial-item img {
+  border-radius: 50%;
+  width: 100px; /* Adjust the size as needed */
+  height: 100px; /* Keep the height and width equal for a perfect circle */
+  object-fit: cover; /* Ensure the image covers the entire circle */
+  margin-bottom: 15px; /* Space between the image and the name */
+}
+
+/* Optional: Additional styling for text and icons */
+.testimonial-item h3, .testimonial-item h4 {
+  margin: 5px 0;
+}
+
+.testimonial-item p {
+  font-style: italic;
+  color: #555;
+}
