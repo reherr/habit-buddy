@@ -1,50 +1,67 @@
-<%= render @habit %>
-
-  <div class="habit-streak">
-    <strong>Current Streak:</strong> <%= @habit.current_streak %> days
+<div class="container-fluid my-4">
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title"><%= @habit.name %></h2>
+          <div class="d-flex flex-column">
+            <%= link_to edit_habit_path(@habit), class: 'btn btn-outline-primary mb-2' do %>
+              <i class="fas fa-edit"></i> Edit this habit
+            <% end %>
+            <%= link_to habits_path, class: 'btn btn-outline-secondary mb-2' do %>
+              <i class="fas fa-arrow-left"></i> Back to habits
+            <% end %>
+            <%= link_to new_habit_entry_path({ habit_id: @habit.id }), class: 'btn btn-outline-success mb-2' do %>
+              <i class="fas fa-plus"></i> New Habit Entry
+            <% end %>
+            <%= button_to @habit, method: :delete, class: 'btn btn-outline-danger' do %>
+              <i class="fas fa-trash-alt"></i> Destroy this habit
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title">Habit Completion Rate</h2>
+          <%= pie_chart @completion_rate, colors: ["#78c2ad", "#f3969a"] %>
+        </div>
+      </div>
+    </div>
   </div>
 
-<div>
-  <%= link_to "Edit this habit", edit_habit_path(@habit) %> |
-  <%= link_to "Back to habits", habits_path %>
-  <%= link_to 'New Habit Entry', new_habit_entry_path({ :habit_id => @habit.id }) %>
-
-  <%= button_to "Destroy this habit", @habit, method: :delete %>
-</div>
-
-<br>
-
-<%= search_form_for @q, url: habit_path(@habit), method: :get do |f| %>
-  <p>Narrow results:</p>
-
-  <div>
-    <%= f.label :entry_date_eq, "Enter date" %>
-    <%= f.text_field :entry_date_eq, :placeholder => "Enter a date" %>
+  <div class="card shadow-sm my-4">
+    <div class="card-body">
+      <h3 class="card-title">Narrow results</h3>
+      <%= search_form_for @q, url: habit_path(@habit), method: :get do |f| %>
+        <div class="form-group">
+          <%= f.label :entry_date_eq, "Enter date" %>
+          <%= f.text_field :entry_date_eq, class: 'form-control' %>
+        </div>
+        <%= f.submit 'Search', class: "btn btn-primary mb-2" %>
+        <%= link_to 'Clear filters', habit_path(@habit), class: 'btn btn-outline-secondary' %>
+      <% end %>
+    </div>
   </div>
 
-  <%= f.submit :class => "btn btn-primary btn-block" %>
-  
-  <%= link_to 'Clear filters', habit_path(@habit) %>
-
-<% end %>
-
-
-
-<h2>Habit Completion Rate</h2>
-<%= pie_chart @completion_rate, colors: ["#78c2ad", "#f3969a"] %>
-
-
-
-
-<br>
-
-<% if !@habit_entries.empty? %>
-
-<h2>Entries</h2>
-<ul>
-  <% @habit_entries.each do |entry| %>
-    <%= render entry %>
-    <%= link_to 'Edit this entry', edit_habit_entry_path(entry.id) %>
+  <% if @habit_entries.any? %>
+    <h2 class="mb-4">Entries</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% @habit_entries.each do |entry| %>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><%= entry.status %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= entry.entry_date.strftime("%m-%d-%Y") %></h6>
+              <p class="card-text"><%= entry.note %></p>
+              <%= link_to edit_habit_entry_path(entry.id), class: 'btn btn-outline-primary' do %>
+                <i class="fas fa-edit"></i> Edit
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-</ul>
-<% end %>
+</div>
