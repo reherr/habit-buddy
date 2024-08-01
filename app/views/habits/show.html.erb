@@ -28,6 +28,14 @@
 
 <% end %>
 
+
+
+<h2>Habit Completion Rate</h2>
+<%= pie_chart @completion_rate, colors: ["#78c2ad", "#f3969a"] %>
+
+
+
+
 <br>
 
 <% if !@habit_entries.empty? %>

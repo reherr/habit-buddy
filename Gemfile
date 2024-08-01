@@ -44,6 +44,10 @@ gem "bootsnap", require: false
 
 gem "ransack"
 
+gem 'chartkick'
+
+gem 'groupdate'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
