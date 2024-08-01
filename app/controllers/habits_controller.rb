@@ -10,9 +10,21 @@ class HabitsController < ApplicationController
 
   # GET /habits/1 or /habits/1.json
   def show
+    #for Ransack
     @habit = Habit.find(params[:id])
     @q = @habit.habit_entries.ransack(params[:q])
     @habit_entries = @q.result
+
+    #for Chartkick
+    completed_count = @habit.habit_entries.where(status: true).count
+    total_count = @habit.habit_entries.count
+    not_completed_count = total_count - completed_count
+
+    @completion_rate = {
+      "Completed (#{(completed_count.to_f / total_count * 100).round(2)}%)" => completed_count,
+      "Not Completed (#{(not_completed_count.to_f / total_count * 100).round(2)}%)" => not_completed_count
+    }
+       
   end
 
   # GET /habits/new
