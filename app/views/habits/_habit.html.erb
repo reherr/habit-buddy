@@ -1,17 +1,19 @@
 <div id="<%= dom_id habit %>">
-  <p>
-    <strong>Name:</strong>
-    <%= habit.name %>
-  </p>
+  <h2>
 
-  <p>
-    <strong>Description:</strong>
+    <strong><%= habit.name %></strong>
+  </h2>
+
+<br>
+
+  <h4>
+
     <%= habit.description %>
-  </p>
-
-  <p>
-    <strong>Start date:</strong>
+  </h4>
+<br>
+  <h6>
+    Start date:
     <%= habit.start_date.strftime("%m-%d-%Y") %>
-  </p>
+  </h6>
 
 </div>

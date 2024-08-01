@@ -14,13 +14,13 @@ class Habit < ApplicationRecord
   belongs_to :user, required: true, class_name: 'User', foreign_key: 'user_id'
   has_many :habit_entries, class_name: 'HabitEntry', foreign_key: 'habit_id', dependent: :destroy
 
-  def current_streak
-    streak = 0
-    habit_entries.order(date: :desc).each do |entry|
-      break unless entry.status
+  # def current_streak
+  #   streak = 0
+  #   habit_entries.order(start_date: :desc).each do |entry|
+  #     break if entry.status == false
 
-      streak += 1
-    end
-    streak
-  end
+  #     streak += 1
+  #   end
+  #   streak
+  # end
 end
