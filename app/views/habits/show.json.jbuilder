@@ -1,1 +1,1 @@
-json.partial! "habits/habit", habit: @habit
+json.partial! 'habits/habit', habit: @habit

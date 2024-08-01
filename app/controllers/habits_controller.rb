@@ -1,21 +1,21 @@
 class HabitsController < ApplicationController
-  before_action :set_habit, only: %i[ show edit update destroy ]
+  before_action :set_habit, only: %i[show edit update destroy]
 
   # GET /habits or /habits.json
   def index
     user_id = current_user.id
-    @habits = Habit.where(user_id: user_id).all
+    @habits = Habit.where(user_id:).all
     # @habits = current_user.habits
   end
 
   # GET /habits/1 or /habits/1.json
   def show
-    #for Ransack
+    # for Ransack
     @habit = Habit.find(params[:id])
     @q = @habit.habit_entries.ransack(params[:q])
     @habit_entries = @q.result
 
-    #for Chartkick
+    # for Chartkick
     completed_count = @habit.habit_entries.where(status: true).count
     total_count = @habit.habit_entries.count
     not_completed_count = total_count - completed_count
@@ -24,7 +24,6 @@ class HabitsController < ApplicationController
       "Completed (#{(completed_count.to_f / total_count * 100).round(2)}%)" => completed_count,
       "Not Completed (#{(not_completed_count.to_f / total_count * 100).round(2)}%)" => not_completed_count
     }
-       
   end
 
   # GET /habits/new
@@ -43,7 +42,7 @@ class HabitsController < ApplicationController
 
     respond_to do |format|
       if @habit.save
-        format.html { redirect_to habit_url(@habit), notice: "Habit was successfully created." }
+        format.html { redirect_to habit_url(@habit), notice: 'Habit was successfully created.' }
         format.json { render :show, status: :created, location: @habit }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,7 +55,7 @@ class HabitsController < ApplicationController
   def update
     respond_to do |format|
       if @habit.update(habit_params)
-        format.html { redirect_to habit_url(@habit), notice: "Habit was successfully updated." }
+        format.html { redirect_to habit_url(@habit), notice: 'Habit was successfully updated.' }
         format.json { render :show, status: :ok, location: @habit }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -70,19 +69,20 @@ class HabitsController < ApplicationController
     @habit.destroy!
 
     respond_to do |format|
-      format.html { redirect_to habits_url, notice: "Habit was successfully destroyed." }
+      format.html { redirect_to habits_url, notice: 'Habit was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_habit
-      @habit = Habit.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def habit_params
-      params.require(:habit).permit(:name, :description, :start_date, :end_date, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_habit
+    @habit = Habit.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def habit_params
+    params.require(:habit).permit(:name, :description, :start_date, :end_date, :user_id)
+  end
 end
