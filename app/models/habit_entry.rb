@@ -21,7 +21,7 @@
 #
 class HabitEntry < ApplicationRecord
   belongs_to :user, required: true
-  belongs_to :habit, required: true, class_name: "Habit", foreign_key: "habit_id"
+  belongs_to :habit, required: true, class_name: 'Habit', foreign_key: 'habit_id'
 
   validates :note, length: { maximum: 500 }
 
@@ -31,8 +31,8 @@ class HabitEntry < ApplicationRecord
 
   before_validation :set_default_entry_date, on: :create
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["entry_date"]
+  def self.ransackable_attributes(_auth_object = nil)
+    ['entry_date']
   end
 
   private
@@ -42,15 +42,14 @@ class HabitEntry < ApplicationRecord
   end
 
   def entry_date_cannot_be_in_the_future
-    if entry_date.present? && entry_date > Date.today
-      errors.add(:entry_date, "cannot be in the future")
-    end
+    return unless entry_date.present? && entry_date > Date.today
+
+    errors.add(:entry_date, 'cannot be in the future')
   end
 
   def unique_entry_per_day_per_habit
-    if HabitEntry.where.not(id: id).where(entry_date: entry_date, habit_id: habit_id).exists?
-      errors.add(:entry_date, "You can only have one entry per day per habit")
-    end
+    return unless HabitEntry.where.not(id:).where(entry_date:, habit_id:).exists?
+
+    errors.add(:entry_date, 'You can only have one entry per day per habit')
   end
-  
 end

@@ -10,39 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_26_161919) do
-  create_table "habit_entries", force: :cascade do |t|
-    t.integer "habit_id"
-    t.date "entry_date"
-    t.boolean "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "note"
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_habit_entries_on_user_id"
+ActiveRecord::Schema[7.1].define(version: 20_240_726_161_919) do
+  create_table 'habit_entries', force: :cascade do |t|
+    t.integer 'habit_id'
+    t.date 'entry_date'
+    t.boolean 'status'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.text 'note'
+    t.integer 'user_id'
+    t.index ['user_id'], name: 'index_habit_entries_on_user_id'
   end
 
-  create_table "habits", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.date "start_date"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'habits', force: :cascade do |t|
+    t.string 'name'
+    t.text 'description'
+    t.date 'start_date'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "username"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.string 'username'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  add_foreign_key "habit_entries", "users"
+  add_foreign_key 'habit_entries', 'users'
 end

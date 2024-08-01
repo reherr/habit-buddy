@@ -1,6 +1,6 @@
-desc "Fill the database tables with some sample data"
-task({ :sample_data => :environment }) do
-  p "Creating sample data"
+desc 'Fill the database tables with some sample data'
+task({ sample_data: :environment }) do
+  p 'Creating sample data'
 
   if Rails.env.development?
     HabitEntry.destroy_all
@@ -12,7 +12,7 @@ task({ :sample_data => :environment }) do
     name = Faker::Name.first_name
     user = User.new
     user.email = "#{name}@example.com"
-    user.password = "password"
+    user.password = 'password'
     user.username = name
     user.save
 
@@ -37,5 +37,4 @@ task({ :sample_data => :environment }) do
   p "There are now #{User.count} users."
   p "There are now #{Habit.count} habits."
   p "There are now #{HabitEntry.count} habit entries."
-
 end
