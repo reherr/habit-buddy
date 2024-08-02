@@ -1,9 +1,19 @@
-<h1>Editing habit</h1>
-
-<%= render "form", habit: @habit %>
-
-<br>
-
-<div>
-  <%= link_to "Back to habit", habit_path(@habit) %>
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title mb-4">Editing Habit</h1>
+          
+          <%= render "form", habit: @habit %>
+          
+          <div class="mt-4">
+            <%= link_to habit_path(@habit), class: 'btn btn-outline-secondary' do %>
+              <i class="fas fa-arrow-left"></i> Back to Habit
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
