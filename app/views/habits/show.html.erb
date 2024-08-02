@@ -1,26 +1,31 @@
 <div class="container-fluid my-4">
   <div class="row">
+    <!-- Habit Card on the left -->
     <div class="col-lg-6 mb-4">
       <div class="card shadow-sm">
         <div class="card-body">
           <h2 class="card-title"><%= @habit.name %></h2>
+          <p class="card-text"><%= @habit.description %></p>
           <div class="d-flex flex-column">
             <%= link_to edit_habit_path(@habit), class: 'btn btn-outline-primary mb-2' do %>
               <i class="fas fa-edit"></i> Edit this habit
             <% end %>
-            <%= link_to habits_path, class: 'btn btn-outline-secondary mb-2' do %>
-              <i class="fas fa-arrow-left"></i> Back to habits
-            <% end %>
             <%= link_to new_habit_entry_path({ habit_id: @habit.id }), class: 'btn btn-outline-success mb-2' do %>
               <i class="fas fa-plus"></i> New Habit Entry
             <% end %>
-            <%= button_to @habit, method: :delete, class: 'btn btn-outline-danger' do %>
-              <i class="fas fa-trash-alt"></i> Destroy this habit
-            <% end %>
+            <div class="d-flex justify-content-between">
+              <%= button_to @habit, method: :delete, class: 'btn btn-outline-danger mb-2' do %>
+                <i class="fas fa-trash-alt"></i> Destroy this habit
+              <% end %>
+              <%= link_to habits_path, class: 'btn btn-outline-secondary mb-2' do %>
+                <i class="fas fa-arrow-left"></i> Back to habits
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="col-lg-6 mb-4">
       <div class="card shadow-sm">
         <div class="card-body">
@@ -30,6 +35,8 @@
       </div>
     </div>
   </div>
+</div>
+
 
   <div class="card shadow-sm my-4">
     <div class="card-body">
