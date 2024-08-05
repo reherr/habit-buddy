@@ -48,6 +48,8 @@ gem 'chartkick'
 
 gem 'groupdate'
 
+gem 'kaminari'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
