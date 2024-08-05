@@ -5,7 +5,9 @@ class HabitsController < ApplicationController
   def index
     user_id = current_user.id
     @habits = Habit.where(user_id:).all
-    # @habits = current_user.habits
+    @breadcrumbs = [
+      {content: 'Habits', href: habits_path }
+    ]
   end
 
   # GET /habits/1 or /habits/1.json
@@ -13,7 +15,7 @@ class HabitsController < ApplicationController
     # for Ransack
     @habit = Habit.find(params[:id])
     @q = @habit.habit_entries.ransack(params[:q])
-    @habit_entries = @q.result
+    @habit_entries = @q.result.page(params[:page]).per(3)
 
     # for Chartkick
     completed_count = @habit.habit_entries.where(status: true).count
@@ -24,16 +26,32 @@ class HabitsController < ApplicationController
       "Completed (#{(completed_count.to_f / total_count * 100).round(2)}%)" => completed_count,
       "Not Completed (#{(not_completed_count.to_f / total_count * 100).round(2)}%)" => not_completed_count
     }
+
+    @breadcrumbs = [
+      { content: 'Habits', href: habits_path },
+      { content: @habit.name, href: habit_path(@habit) }
+    ]
   end
 
   # GET /habits/new
   def new
     @habit = Habit.new
+
+    @breadcrumbs = [
+      { content: 'Habits', href: habits_path },
+      { content: 'New' }
+    ]
   end
 
   # GET /habits/1/edit
   def edit
     @habit = Habit.find(params[:id])
+
+    @breadcrumbs = [
+      { content: 'Habits', href: habits_path },
+      { content: @habit.name, href: habit_path(@habit) },
+      { content: 'Edit' }
+    ]
   end
 
   # POST /habits or /habits.json

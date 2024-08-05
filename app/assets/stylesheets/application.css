@@ -84,3 +84,12 @@
   color: #555;
 }
 
+/* Ensure the content area grows to fill available space */
+.row.flex-grow-1 {
+  flex: 1;
+}
+
+/* Center pagination at the bottom */
+.d-flex.justify-content-center.mt-4 {
+  margin-top: auto;
+}
