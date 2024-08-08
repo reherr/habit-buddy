@@ -20,12 +20,23 @@ class HabitEntriesController < ApplicationController
     @habit_id = params[:habit_id]
     @habit_entry = HabitEntry.new(habit_id: @habit_id)
     @habit = Habit.where({ id: @habit_id }).first
+
+    @breadcrumbs = [
+      { content: @habit.name, href: habit_path(@habit) },
+      { content: 'New Habit Entry' }
+
+    ]
   end
 
   # GET /habit_entries/1/edit
   def edit
     habit_id = @habit_entry.habit_id
     @habit = Habit.where({ id: habit_id }).first
+
+    @breadcrumbs = [
+      { content: @habit.name, href: habit_path(@habit) },
+      { content: 'Edit' }
+    ]
   end
 
   # POST /habit_entries or /habit_entries.json
