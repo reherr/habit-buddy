@@ -1,9 +1,28 @@
-<h1> <%= @habit.name %> </h1>
+<!--<h1> <%#= @habit.name %> </h1>
 
-<%= render "form", habit_entry: @habit_entry %>
-
+<%#= render "form", habit_entry: @habit_entry %>-->
+<!--
 <br>
 
 <div>
-  <%= link_to "Back to habit", habit_path(@habit) %>
+  <%#= link_to "Back to habit", habit_path(@habit) %>-->
+<!--</div>-->
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title mb-4"><%= @habit.name %></h1>
+
+          <%= render "form", habit_entry: @habit_entry %>
+
+          <div class="mt-4">
+            <%= link_to habit_path(@habit), class: 'btn btn-outline-secondary' do %>
+              <i class="fas fa-arrow-left"></i> Back to Habit
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
