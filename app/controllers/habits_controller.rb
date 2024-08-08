@@ -5,9 +5,6 @@ class HabitsController < ApplicationController
   def index
     user_id = current_user.id
     @habits = Habit.where(user_id:).all
-    @breadcrumbs = [
-      {content: 'Habits', href: habits_path }
-    ]
   end
 
   # GET /habits/1 or /habits/1.json
