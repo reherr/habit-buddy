@@ -1,5 +1,6 @@
 class HabitEntriesController < ApplicationController
   before_action :set_habit_entry, only: %i[show edit update destroy]
+  after_action { authorize(@habit_entry || HabitEntry ) }
 
   # GET /habit_entries or /habit_entries.json
   def index
