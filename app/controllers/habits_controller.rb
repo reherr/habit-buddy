@@ -1,11 +1,12 @@
 class HabitsController < ApplicationController
   before_action :set_habit, only: %i[show edit update destroy]
-  after_action { authorize(@habit || Habit ) }
+  before_action { authorize(@habit || Habit ) }
 
   # GET /habits or /habits.json
   def index
-    user_id = current_user.id
-    @habits = Habit.where(user_id:).all
+    # user_id = current_user.id
+    # @habits = Habit.where(user_id:).all
+    @habits = policy_scope(Habit)
   end
 
   # GET /habits/1 or /habits/1.json

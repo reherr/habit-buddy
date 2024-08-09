@@ -22,7 +22,7 @@ end
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      scope.all
+      scope.joins(:habit).where(habits: { user_id: user.id })
     end
   end
 end

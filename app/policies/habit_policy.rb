@@ -21,7 +21,7 @@ class HabitPolicy < ApplicationPolicy
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      scope.all
+      scope.where(user: user)
     end
   end
 end
