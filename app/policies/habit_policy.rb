@@ -1,4 +1,10 @@
 class HabitPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      scope.where(user: user)
+    end
+  end
+
   def index?
     user == user
   end
@@ -19,9 +25,4 @@ class HabitPolicy < ApplicationPolicy
     show?
   end
 
-  class Scope < ApplicationPolicy::Scope
-    def resolve
-      scope.where(user: user)
-    end
-  end
 end

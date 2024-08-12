@@ -1,7 +1,12 @@
 class HabitEntryPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      scope.joins(:habit).where(habits: { user_id: user.id })
+    end
+  end
 
 def new?
-  user.id == record.habit.user_id
+  user == user
 end
 
 def show?
@@ -20,9 +25,4 @@ def edit?
   update?
 end
 
-  class Scope < ApplicationPolicy::Scope
-    def resolve
-      scope.joins(:habit).where(habits: { user_id: user.id })
-    end
-  end
 end
