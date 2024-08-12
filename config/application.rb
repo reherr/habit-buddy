@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module RailsTemplate
   class Application < Rails::Application
+
+    config.assets.css_compressor = nil
+    
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
@@ -37,4 +40,5 @@ module RailsTemplate
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
+
 end
