@@ -1,37 +1,36 @@
 class HabitEntriesController < ApplicationController
   before_action :set_habit_entry, only: %i[show edit update destroy]
+  before_action :authorize_habit_entry, only: %i[new create]
 
   # GET /habit_entries or /habit_entries.json
   def index
-    @habit_entries = HabitEntry.all
-    @habit = Habit.all.sample
+    @habit_entries = policy_scope(HabitEntry)
   end
 
   # GET /habit_entries/1 or /habit_entries/1.json
   def show
-    habit_id = @habit_entry.habit_id
-    @habit = Habit.where({ id: habit_id }).first
+    @habit_entry = HabitEntry.find(params[:id])
+    authorize @habit_entry
   end
 
   # GET /habit_entries/new
   def new
-    # @habit_entry = HabitEntry.new
-    # habit_id = params.fetch("habit_id")
     @habit_id = params[:habit_id]
     @habit_entry = HabitEntry.new(habit_id: @habit_id)
-    @habit = Habit.where({ id: @habit_id }).first
+    @habit = Habit.find(@habit_id)
+    authorize @habit_entry
 
     @breadcrumbs = [
       { content: @habit.name, href: habit_path(@habit) },
       { content: 'New Habit Entry' }
-
     ]
   end
 
   # GET /habit_entries/1/edit
   def edit
     habit_id = @habit_entry.habit_id
-    @habit = Habit.where({ id: habit_id }).first
+    @habit = Habit.find(habit_id)
+    authorize @habit_entry
 
     @breadcrumbs = [
       { content: @habit.name, href: habit_path(@habit) },
@@ -41,9 +40,9 @@ class HabitEntriesController < ApplicationController
 
   # POST /habit_entries or /habit_entries.json
   def create
-    habit_id = params.fetch('habit_entry').fetch('habit_id')
-    @habit = Habit.where({ id: habit_id }).first
     @habit_entry = HabitEntry.new(habit_entry_params)
+    @habit = Habit.find(@habit_entry.habit_id)
+    authorize @habit_entry
 
     respond_to do |format|
       if @habit_entry.save
@@ -59,6 +58,7 @@ class HabitEntriesController < ApplicationController
   # PATCH/PUT /habit_entries/1 or /habit_entries/1.json
   def update
     @habit_entry = HabitEntry.find(params[:id])
+    authorize @habit_entry
 
     respond_to do |format|
       if @habit_entry.update(habit_entry_params)
@@ -73,6 +73,7 @@ class HabitEntriesController < ApplicationController
 
   # DELETE /habit_entries/1 or /habit_entries/1.json
   def destroy
+    authorize @habit_entry
     @habit_entry.destroy!
 
     respond_to do |format|
@@ -83,13 +84,16 @@ class HabitEntriesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_habit_entry
     @habit_entry = HabitEntry.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
+  def authorize_habit_entry
+    authorize @habit_entry || HabitEntry.new(habit_id: params[:habit_id])
+  end
+
   def habit_entry_params
     params.require(:habit_entry).permit(:user_id, :habit_id, :entry_date, :status, :note)
   end
 end
+

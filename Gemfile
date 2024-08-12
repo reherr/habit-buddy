@@ -50,6 +50,8 @@ gem 'groupdate'
 
 gem 'kaminari'
 
+gem 'pundit'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
