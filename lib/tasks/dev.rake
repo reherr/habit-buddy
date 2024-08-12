@@ -8,6 +8,9 @@ task({ sample_data: :environment }) do
     User.destroy_all
   end
 
+  #default user
+  User.create(email: 'test@example.com', username: 'test', password: 'password', admin: true)
+
   10.times do
     name = Faker::Name.first_name
     user = User.new
