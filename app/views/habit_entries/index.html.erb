@@ -1,12 +1,17 @@
-<h1>Habit entries</h1>
+<h1 id="habit-entries-heading">Habit Entries</h1>
 
-<div id="habit_entries">
+<section aria-labelledby="habit-entries-heading">
   <% @habit_entries.each do |habit_entry| %>
-    <%= render habit_entry %>
-    <p>
-      <%= link_to "Show this habit entry", habit_entry %>
-    </p>
+    <article aria-labelledby="entry-<%= habit_entry.id %>-label">
+      <%= render habit_entry %>
+      <p id="entry-<%= habit_entry.id %>-label">
+        <%= link_to "Show this habit entry", habit_entry, aria: { label: "Show details for habit entry #{habit_entry.id}" } %>
+      </p>
+    </article>
   <% end %>
-</div>
+</section>
 
-<%= link_to "New habit entry", new_habit_entry_path %>
+<nav aria-label="Habit entry navigation">
+  <%= link_to "New habit entry", new_habit_entry_path, class: "btn btn-primary", role: "button", aria: { label: "Create a new habit entry" } %>
+</nav>
+

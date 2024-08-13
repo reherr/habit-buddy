@@ -1,8 +1,18 @@
 <%= render @habit_entry %>
 
-<div>
-  <%= link_to "Edit this habit entry", edit_habit_entry_path(@habit_entry) %> |
-  <%= link_to "Back to habit", habit_path(@habit) %>
+<nav aria-label="Habit entry actions">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <%= link_to "Edit this habit entry", edit_habit_entry_path(@habit_entry), aria: { label: "Edit habit entry titled " + @habit_entry.title.to_s } %>
+    </li>
+    <li class="list-inline-item">
+      <%= link_to "Back to habit", habit_path(@habit), aria: { label: "Return to habit named " + @habit.name.to_s } %>
+    </li>
+    <li class="list-inline-item">
+      <%= button_to "Destroy this habit entry", @habit_entry, method: :delete, form: {
+        "aria-label" => "Permanently delete habit entry titled " + @habit_entry.title.to_s
+      } %>
+    </li>
+  </ul>
+</nav>
 
-  <%= button_to "Destroy this habit entry", @habit_entry, method: :delete %>
-</div>

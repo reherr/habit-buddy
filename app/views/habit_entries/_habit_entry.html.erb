@@ -1,22 +1,28 @@
-<div id="<%= dom_id habit_entry %>">
+<div id="<%= dom_id habit_entry %>" role="region" aria-labelledby="<%= dom_id(habit_entry) %>-heading">
+  <h2 id="<%= dom_id(habit_entry) %>-heading" class="sr-only">
+    Habit Entry Details
+  </h2>
+
   <p>
     <strong>Habit:</strong>
-    <%= @habit.name %>
+    <span aria-label="Habit name"><%= @habit.name %></span>
   </p>
 
   <p>
     <strong>Entry date:</strong>
-    <%= habit_entry.entry_date.strftime("%m-%d-%Y") %>
+    <time datetime="<%= habit_entry.entry_date.to_s(:db) %>">
+      <%= habit_entry.entry_date.strftime("%B %d, %Y") %>
+    </time>
   </p>
 
   <p>
     <strong>Status:</strong>
-    <%= habit_entry.status %>
+    <span aria-label="Habit status"><%= habit_entry.status %></span>
   </p>
 
-    <p>
+  <p>
     <strong>Note:</strong>
-    <%= habit_entry.note %>
+    <span aria-label="Habit note"><%= habit_entry.note %></span>
   </p>
-
 </div>
+
