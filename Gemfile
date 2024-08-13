@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.1'
+gem 'blazer'
 gem 'bootsnap', require: false
 gem 'chartkick'
 gem 'groupdate'
@@ -15,7 +16,7 @@ gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 gem 'rails_admin', '~> 3.0'
 gem 'ransack'
 gem 'redis', '~> 4.0'
-gem "sassc-rails"
+gem 'sassc-rails'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
@@ -26,9 +27,10 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet'
   gem 'rubocop', require: false
   gem 'web-console'
-  gem 'bullet'
+end
 
 group :test do
   gem 'capybara'
