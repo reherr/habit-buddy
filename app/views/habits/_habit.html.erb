@@ -1,19 +1,17 @@
-<div id="<%= dom_id habit %>">
-  <h2>
+<section id="<%= dom_id habit %>" aria-labelledby="<%= dom_id(habit, :name) %>">
+  <header>
+    <h2 id="<%= dom_id(habit, :name) %>">
+      <strong><%= habit.name %></strong>
+    </h2>
+  </header>
 
-    <strong><%= habit.name %></strong>
-  </h2>
-
-<br>
-
-  <h4>
-
+  <p>
     <%= habit.description %>
-  </h4>
-<br>
-  <h6>
-    Start date:
-    <%= habit.start_date.strftime("%m-%d-%Y") %>
-  </h6>
+  </p>
 
-</div>
+  <p>
+    <strong>Start date:</strong>
+    <time datetime="<%= habit.start_date.iso8601 %>"><%= habit.start_date.strftime("%m-%d-%Y") %></time>
+  </p>
+</section>
+

@@ -1,19 +1,19 @@
-<div class="container my-4">
-  <div class="row justify-content-center">
+<main class="container my-4">
+  <section class="row justify-content-center">
     <div class="col-lg-8">
       <div class="card shadow-sm">
-        <div class="card-body">
+        <header class="card-body">
           <h1 class="card-title mb-4">Editing Habit</h1>
           
           <%= render "form", habit: @habit %>
           
           <div class="mt-4">
             <%= link_to habit_path(@habit), class: 'btn btn-outline-secondary' do %>
-              <i class="fas fa-arrow-left"></i> Back to Habit
+              <i class="fas fa-arrow-left" aria-hidden="true"></i> <span class="sr-only">Back to Habit: </span>Back to Habit
             <% end %>
           </div>
-        </div>
+        </header>
       </div>
     </div>
-  </div>
-</div>
+  </section>
+</main>

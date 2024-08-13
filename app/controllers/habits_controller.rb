@@ -4,8 +4,6 @@ class HabitsController < ApplicationController
 
   # GET /habits or /habits.json
   def index
-    # user_id = current_user.id
-    # @habits = Habit.where(user_id:).all
     @habits = policy_scope(Habit)
   end
 

@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
     <title>HabitBuddy</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= render partial: "shared/cdn_assets" %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <div>
+    <header>
       <%= render partial: "shared/navbar" %>
-    </div>
+    </header>
 
-    <%= render "shared/flash" %>
-    <%= render "shared/breadcrumbs" %>
-    <%= yield %>
+    <main role="main">
+      <%= render "shared/flash" %>
+      <%= render "shared/breadcrumbs" %>
+      <%= yield %>
+    </main>
 
   </body>
 </html>

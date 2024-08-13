@@ -1,28 +1,20 @@
-<!--<h1> <%#= @habit.name %> </h1>
-
-<%#= render "form", habit_entry: @habit_entry %>-->
-<!--
-<br>
-
-<div>
-  <%#= link_to "Back to habit", habit_path(@habit) %>-->
-<!--</div>-->
 <div class="container my-4">
   <div class="row justify-content-center">
     <div class="col-lg-8">
-      <div class="card shadow-sm">
+      <section class="card shadow-sm" aria-labelledby="habit-title">
         <div class="card-body">
-          <h1 class="card-title mb-4"><%= @habit.name %></h1>
+          <h1 id="habit-title" class="card-title mb-4"><%= @habit.name %></h1>
 
           <%= render "form", habit_entry: @habit_entry %>
 
-          <div class="mt-4">
-            <%= link_to habit_path(@habit), class: 'btn btn-outline-secondary' do %>
-              <i class="fas fa-arrow-left"></i> Back to Habit
+          <nav class="mt-4" aria-label="Habit navigation">
+            <%= link_to habit_path(@habit), class: 'btn btn-outline-secondary', aria: { label: "Return to " + @habit.name } do %>
+              <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Habit
             <% end %>
-          </div>
+          </nav>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
+

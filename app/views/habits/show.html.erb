@@ -2,20 +2,20 @@
   <div class="row mb-4 flex-grow-1">
     <!-- Habit Card on the left -->
     <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
+      <div class="card shadow-sm" role="region" aria-labelledby="habit-title">
         <div class="card-body">
-          <h2 class="card-title"><%= @habit.name %></h2>
+          <h2 id="habit-title" class="card-title"><%= @habit.name %></h2>
           <p class="card-text"><%= @habit.description %></p>
           <div class="d-flex flex-column">
-            <%= link_to edit_habit_path(@habit), class: 'btn btn-outline-primary mb-2' do %>
-              <i class="fas fa-edit"></i> Edit this habit
+            <%= link_to edit_habit_path(@habit), class: 'btn btn-outline-primary mb-2', aria: { label: "Edit habit #{@habit.name}" } do %>
+              <i class="fas fa-edit" aria-hidden="true"></i> Edit this habit
             <% end %>
-            <%= link_to new_habit_entry_path({ habit_id: @habit.id }), class: 'btn btn-outline-success mb-2' do %>
-              <i class="fas fa-plus"></i> New Habit Entry
+            <%= link_to new_habit_entry_path({ habit_id: @habit.id }), class: 'btn btn-outline-success mb-2', aria: { label: "Add a new entry for habit #{@habit.name}" } do %>
+              <i class="fas fa-plus" aria-hidden="true"></i> New Habit Entry
             <% end %>
             <div class="d-flex justify-content-between">
-              <%= button_to @habit, method: :delete, class: 'btn btn-outline-danger mb-2' do %>
-                <i class="fas fa-trash-alt"></i> Destroy this habit
+              <%= button_to @habit, method: :delete, class: 'btn btn-outline-danger mb-2', aria: { label: "Delete habit #{@habit.name}" } do %>
+                <i class="fas fa-trash-alt" aria-hidden="true"></i> Destroy this habit
               <% end %>
             </div>
           </div>
@@ -24,25 +24,26 @@
     </div>
 
     <div class="col-lg-6 mb-4">
-      <div class="card shadow-sm">
+      <div class="card shadow-sm" role="region" aria-labelledby="completion-rate-title">
         <div class="card-body">
-          <h2 class="card-title">Habit Completion Rate</h2>
-          <%= pie_chart @completion_rate, colors: ["#78c2ad", "#f3969a"] %>
+          <h2 id="completion-rate-title" class="card-title">Habit Completion Rate</h2>
+          <%= pie_chart @completion_rate, colors: ["#78c2ad", "#f3969a"], library: { role: "img", aria: { label: "Pie chart showing the completion rate of the habit" } } %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="card shadow-sm my-4">
+  <div class="card shadow-sm my-4" role="region" aria-labelledby="filter-title">
     <div class="card-body">
-      <h3 class="card-title">Narrow results</h3>
+      <h3 id="filter-title" class="card-title">Narrow results</h3>
       <%= search_form_for @q, url: habit_path(@habit), method: :get do |f| %>
         <div class="form-group">
           <%= f.label :entry_date_eq, "Enter date" %>
-          <%= f.text_field :entry_date_eq, class: 'form-control' %>
+          <%= f.text_field :entry_date_eq, class: 'form-control', aria: { describedby: "dateHelp" } %>
+          <small id="dateHelp" class="form-text text-muted">Format: MM-DD-YYYY</small>
         </div>
-        <%= f.submit 'Search', class: "btn btn-primary mb-2" %>
-        <%= link_to 'Clear filters', habit_path(@habit), class: 'btn btn-outline-secondary' %>
+        <%= f.submit 'Search', class: "btn btn-primary mb-2", aria: { label: "Search for entries on a specific date" } %>
+        <%= link_to 'Clear filters', habit_path(@habit), class: 'btn btn-outline-secondary', aria: { label: "Clear search filters" } %>
       <% end %>
     </div>
   </div>
@@ -52,13 +53,13 @@
     <div class="row row-cols-1 row-cols-md-3 g-4 flex-grow-1">
       <% @habit_entries.each do |entry| %>
         <div class="col">
-          <div class="card h-100 shadow-sm">
+          <div class="card h-100 shadow-sm" role="region" aria-labelledby="entry-<%= entry.id %>-title">
             <div class="card-body">
-              <h5 class="card-title"><%= entry.status %></h5>
+              <h5 id="entry-<%= entry.id %>-title" class="card-title"><%= entry.status %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= entry.entry_date.strftime("%m-%d-%Y") %></h6>
               <p class="card-text"><%= entry.note %></p>
-              <%= link_to edit_habit_entry_path(entry.id), class: 'btn btn-outline-primary' do %>
-                <i class="fas fa-edit"></i> Edit
+              <%= link_to edit_habit_entry_path(entry.id), class: 'btn btn-outline-primary', aria: { label: "Edit entry from #{entry.entry_date.strftime("%m-%d-%Y")}" } do %>
+                <i class="fas fa-edit" aria-hidden="true"></i> Edit
               <% end %>
             </div>
           </div>
@@ -70,13 +71,13 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <% @habit_entries.each do |entry| %>
         <div class="col">
-          <div class="card h-100 shadow-sm">
+          <div class="card h-100 shadow-sm" role="region" aria-labelledby="entry-<%= entry.id %>-title">
             <div class="card-body">
-              <h5 class="card-title"><%= entry.status %></h5>
+              <h5 id="entry-<%= entry.id %>-title" class="card-title"><%= entry.status %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= entry.entry_date.strftime("%m-%d-%Y") %></h6>
               <p class="card-text"><%= entry.note %></p>
-              <%= link_to edit_habit_entry_path(entry.id), class: 'btn btn-outline-primary' do %>
-                <i class="fas fa-edit"></i> Edit
+              <%= link_to edit_habit_entry_path(entry.id), class: 'btn btn-outline-primary', aria: { label: "Edit entry from #{entry.entry_date.strftime("%m-%d-%Y")}" } do %>
+                <i class="fas fa-edit" aria-hidden="true"></i> Edit
               <% end %>
             </div>
           </div>
@@ -85,7 +86,7 @@
     </div>
   <% end %>
 
-  <div class="d-flex justify-content-center mt-4">
+  <div class="d-flex justify-content-center mt-4" aria-label="Pagination controls">
     <%= paginate @habit_entries %>
   </div>
 </div>

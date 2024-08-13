@@ -1,13 +1,13 @@
 <% if @breadcrumbs.present? %>
-  <nav aria-label="breadcrumb" class="text-light">
+  <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <% @breadcrumbs.each do |breadcrumb| %>
-        <% if breadcrumb == @breadcrumbs.last %>
-          <li class="breadcrumb-item active text-light" aria-current="page">
-            <%= breadcrumb.fetch(:content) %>
+      <% @breadcrumbs.each_with_index do |breadcrumb, index| %>
+        <% if index == @breadcrumbs.size - 1 %>
+          <li class="breadcrumb-item active" aria-current="page">
+            <span class="text-light"><%= breadcrumb.fetch(:content) %></span>
           </li>
         <% else %>
-          <li class="breadcrumb-item text-body">
+          <li class="breadcrumb-item">
             <%= link_to breadcrumb.fetch(:content), breadcrumb[:href], class: 'text-light' %>
           </li>
         <% end %>
@@ -15,3 +15,4 @@
     </ol>
   </nav>
 <% end %>
+

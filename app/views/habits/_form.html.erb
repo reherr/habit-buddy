@@ -1,6 +1,6 @@
 <%= form_with(model: habit, local: true, class: 'needs-validation') do |form| %>
   <% if habit.errors.any? %>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" role="alert" aria-live="assertive">
       <h4 class="alert-heading"><%= pluralize(habit.errors.count, "error") %> prohibited this habit from being saved:</h4>
       <ul>
         <% habit.errors.each do |error| %>
@@ -12,17 +12,20 @@
 
   <div class="mb-3">
     <%= form.label :name, class: 'form-label' %>
-    <%= form.text_field :name, class: 'form-control', required: true %>
+    <%= form.text_field :name, class: 'form-control', required: true, aria: { describedby: 'nameHelp'} %>
+    <small id='nameHelp' class='form-text text-muted'>Enter the name of the habit.</small>
   </div>
 
   <div class="mb-3">
     <%= form.label :description, class: 'form-label' %>
-    <%= form.text_area :description, class: 'form-control', rows: 5 %>
+    <%= form.text_area :description, class: 'form-control', rows: 5, aria: { describedby: 'descriptionHelp' }%>
+    <small id="descriptionHelp" class="form-text text-muted">Provide a brief description of the habit.</small>
   </div>
 
   <div class="mb-3">
     <%= form.label :start_date, class: 'form-label' %>
-    <%= form.date_field :start_date, value: Date.today, class: 'form-control' %>
+    <%= form.date_field :start_date, value: Date.today, class: 'form-control', aria: { describedby: 'startDateHelp' } %>
+    <small id="startDateHelp" class="form-text text-muted">Select the start date for the habit.</small>
   </div>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
