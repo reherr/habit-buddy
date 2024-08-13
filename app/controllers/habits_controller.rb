@@ -28,6 +28,10 @@ class HabitsController < ApplicationController
       { content: 'Habits', href: habits_path },
       { content: @habit.name, href: habit_path(@habit) }
     ]
+    respond_to do |format|
+      format.html { render :show }
+      format.js
+    end
   end
 
   # GET /habits/new
