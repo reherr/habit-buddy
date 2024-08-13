@@ -3,6 +3,7 @@ import { Turbo } from "@hotwired/turbo-rails"
 import "chartkick"
 import "Chart.bundle"
 import "controllers"
+import './packs/date_format_converter'
 
 Turbo.session.drive = false
 
