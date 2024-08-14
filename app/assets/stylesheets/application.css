@@ -93,3 +93,11 @@
 .d-flex.justify-content-center.mt-4 {
   margin-top: auto;
 }
+
+.border-highlight {
+  border: 5px solid #333; /* Dark color for the border */
+  padding: 5px; /* Space between the border and the image */
+  border-radius: 8px; /* Optional: rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: shadow for added emphasis */
+}
+
