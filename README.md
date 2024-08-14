@@ -94,3 +94,8 @@ If you encounter issue, check the following:
 ## API Documentation
 
 HabitBuddy does not provide its own API endpoints. 
+
+## Github Project
+
+[Link to Github Project](https://github.com/users/reherr/projects/1)
+[Link to Github Repository](https://github.com/reherr/habit-buddy)
