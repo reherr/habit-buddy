@@ -1,4 +1,4 @@
-<%= form_with(model: habit_entry, local: true) do |form| %>
+<%= form_with(model: habit_entry, local: true, class: 'needs-validation') do |form| %>
   <% if habit_entry.errors.any? %>
     <div class="alert alert-danger" role="alert" aria-labelledby="error-heading">
       <h4 id="error-heading" class="alert-heading">
@@ -15,29 +15,29 @@
   <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :habit_id, value: habit_entry.habit_id %>
 
-  <div class="form-group">
-    <%= form.label :entry_date %>
-    <%= form.date_field :entry_date, class: 'form-control', aria: { describedby: 'entry-date-description' } %>
-    <small id="entry-date-description" class="form-text text-muted">Please select the date for this habit entry.</small>
+  <div class="mb-3">
+    <%= form.label :entry_date, class: 'form-label' %>
+    <%= form.date_field :entry_date, class: 'form-control', aria: { describedby: 'entry-date-help' } %>
+    <small id="entry-date-help" class="form-text text-muted">Select the date for this habit entry.</small>
   </div>
 
-  <div class="form-group">
-    <%= form.label :status %>
+  <div class="mb-3">
+    <%= form.label :status, class: 'form-label' %>
     <div class="form-check">
-      <%= form.check_box :status, class: 'form-check-input', aria: { describedby: 'status-description' } %>
-      <%= form.label :status, class: 'form-check-label' %>
+      <%= form.check_box :status, class: 'form-check-input', aria: { describedby: 'status-help' } %>
+      <%= form.label :status, 'Completed', class: 'form-check-label' %>
     </div>
-    <small id="status-description" class="form-text text-muted">Check this box if the habit was completed on the selected date.</small>
+    <small id="status-help" class="form-text text-muted">Check this box if the habit was completed on the selected date.</small>
   </div>
 
-  <div class="form-group">
-    <%= form.label :note %>
-    <%= form.text_area :note, rows: 3, class: 'form-control', aria: { describedby: 'note-description' } %>
-    <small id="note-description" class="form-text text-muted">Add any additional notes or comments about this habit entry.</small>
+  <div class="mb-3">
+    <%= form.label :note, class: 'form-label' %>
+    <%= form.text_area :note, rows: 3, class: 'form-control', aria: { describedby: 'note-help' } %>
+    <small id="note-help" class="form-text text-muted">Add any additional notes or comments about this habit entry.</small>
   </div>
 
-  <div class="form-group">
-    <%= form.submit 'Save', class: 'btn btn-primary' %>
+  <div class="d-grid">
+    <%= form.submit 'Save Entry', class: 'btn btn-primary' %>
   </div>
 <% end %>
 
