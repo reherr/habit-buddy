@@ -6,7 +6,7 @@
         <div class="form-group">
           <%= f.label :entry_date_eq, "Enter date" %>
           <%= f.text_field :entry_date_eq, class: 'form-control', aria: { describedby: "dateHelp" } %>
-          <small id="dateHelp" class="form-text text-muted">Format: MM-DD-YYYY</small>
+          <small id="dateHelp" class="form-text text-muted">Format: YYYY-MM-DD</small>
         </div>
         <%= f.submit 'Search', class: "btn btn-primary mb-2", aria: { label: "Search for entries on a specific date" } %>
         <%= link_to 'Clear filters', habit_path(@habit), class: 'btn btn-outline-secondary', aria: { label: "Clear search filters" } %>
