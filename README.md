@@ -91,6 +91,8 @@ If you encounter issue, check the following:
 
 ## Visual Aids
 
+[Watch the video](https://drive.google.com/file/d/1NT-ekYPlydL5cp9SQh5jFlhjeaqwovAg/view)
+
 ## API Documentation
 
 HabitBuddy does not provide its own API endpoints. 
