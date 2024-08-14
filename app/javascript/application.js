@@ -4,7 +4,6 @@ import "chartkick"
 import "Chart.bundle"
 import "controllers"
 import './packs/date_format_converter'
-import './pwa/companion'
 
 Turbo.session.drive = false
 
