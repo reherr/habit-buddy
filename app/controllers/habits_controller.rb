@@ -12,7 +12,7 @@ class HabitsController < ApplicationController
     # for Ransack
     @habit = Habit.find(params[:id])
     @q = @habit.habit_entries.ransack(params[:q])
-    @habit_entries = @q.result.page(params[:page]).per(3)
+    @habit_entries = @q.result.order(entry_date: :asc).page(params[:page]).per(3)
 
     # for Chartkick
     completed_count = @habit.habit_entries.where(status: true).count
