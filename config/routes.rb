@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     mount RailsAdmin::Engine, at: 'admin', as: 'rails_admin'
   end
 
+  get "/manifest.json", to: "service_worker#manifest"
+
 end
