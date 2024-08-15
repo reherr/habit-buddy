@@ -96,4 +96,3 @@ class HabitEntriesController < ApplicationController
     params.require(:habit_entry).permit(:user_id, :habit_id, :entry_date, :status, :note)
   end
 end
-

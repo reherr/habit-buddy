@@ -24,5 +24,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :habit_entries, class_name: 'HabitEntry', foreign_key: 'user_id', dependent: :destroy
-  has_many :habits, through: :habit_entries, source: :habit #class_name: "Habit", dependent: :destroy
+  has_many :habits, through: :habit_entries, source: :habit
 end
