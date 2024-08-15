@@ -9,6 +9,8 @@
 
     <%= display_meta_tags(MetaTagService.defaults) %>
 
+    <link rel="manifest" href="/manifest.json" />
+
     <%= render partial: "shared/cdn_assets" %>
 
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
