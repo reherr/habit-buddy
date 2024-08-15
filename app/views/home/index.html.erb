@@ -17,31 +17,7 @@
 
 <hr>
 
-<section aria-labelledby="how-to-use-heading">
-  <div class="container">
-    <div class="heading mt-5">
-      <h2 id="how-to-use-heading">How to use HabitBuddy</h2>
-      <h4 class="text-body">It is actually pretty simple.</h4>
-    </div>
-
-    <div class="row no-gutters mb-5">
-      <div class="col-lg-4 box" role="article" aria-labelledby="step-one-heading">
-        <img src="<%= asset_path 'number-one.png' %>" alt="Number one icon">
-        <h4 id="step-one-heading" class="text-primary">Create an Account</h4>
-      </div>
-
-      <div class="col-lg-4 box featured" role="article" aria-labelledby="step-two-heading">
-        <img src="<%= asset_path 'number-two.png' %>" alt="Number two icon">
-        <h4 id="step-two-heading" class="text-primary">Add your Habits</h4>
-      </div>
-
-      <div class="col-lg-4 box" role="article" aria-labelledby="step-three-heading">
-        <img src="<%= asset_path 'number-three.png' %>" alt="Number three icon">
-        <h4 id="step-three-heading" class="text-primary">Record Your Progress</h4>
-      </div>
-    </div>
-  </div>
-</section>
+<%= render 'home/how_to' %>
 
 <hr>
 
@@ -60,37 +36,7 @@
 
 <hr>
 
-<section aria-labelledby="testimonials-heading">
-  <div class="container">
-    <div class="testimonials-header mt-5">
-      <h2 id="testimonials-heading">Testimonials</h2>
-    </div>
-
-    <div class="testimonials">
-      <div class="testimonial-item" role="article" aria-labelledby="testimonial-one-heading">
-        <img src="<%= asset_path 'peep-one.png' %>" alt="Araceli H.">
-        <h3 id="testimonial-one-heading">Araceli H.</h3>
-        <h4 class="text-primary">CEO &amp; Founder</h4>
-        <p>
-          <i class="bx bxs-quote-alt-left quote-icon-left" aria-hidden="true"></i>
-          I've tried many habit tracker apps, but HabitBuddy stands out with its clean design and intuitive interface. The streak feature gives me a clear picture of my progress!
-          <i class="bx bxs-quote-alt-right quote-icon-right" aria-hidden="true"></i>
-        </p>
-      </div>
-
-      <div class="testimonial-item" role="article" aria-labelledby="testimonial-two-heading">
-        <img src="<%= asset_path 'peep-two.png' %>" alt="Lorenzo H.P.">
-        <h3 id="testimonial-two-heading">Lorenzo H.P.</h3>
-        <h4 class="text-primary">Student</h4>
-        <p>
-          <i class="bx bxs-quote-alt-left quote-icon-left" aria-hidden="true"></i>
-          As someone who struggles with consistency, HabitBuddy has been a game-changer. I appreciate how it celebrates even the smallest amount of progress to keep people motivated. It's an essential tool for anyone serious about self-improvement.
-          <i class="bx bxs-quote-alt-right quote-icon-right" aria-hidden="true"></i>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+<%= render 'home/testimonials' %>
 
 <section class="contact-me text-center my-5" aria-labelledby="contact-heading">
   <div class="container">
