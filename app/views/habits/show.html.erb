@@ -10,9 +10,7 @@
             <%= link_to edit_habit_path(@habit), class: 'btn btn-outline-primary mb-2', aria: { label: "Edit habit #{@habit.name}" } do %>
               <i class="fas fa-edit" aria-hidden="true"></i> Edit this habit
             <% end %>
-            <%= link_to new_habit_entry_path({ habit_id: @habit.id }), class: 'btn btn-outline-success mb-2', aria: { label: "Add a new entry for habit #{@habit.name}" } do %>
-              <i class="fas fa-plus" aria-hidden="true"></i> New Habit Entry
-            <% end %>
+
             <div class="d-flex justify-content-between">
               <%= button_to @habit, method: :delete, class: 'btn btn-outline-danger mb-2', aria: { label: "Delete habit #{@habit.name}" } do %>
                 <i class="fas fa-trash-alt" aria-hidden="true"></i> Destroy this habit
