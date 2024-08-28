@@ -1,3 +1,4 @@
+# This file also has some rubocop flags
 class HabitPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

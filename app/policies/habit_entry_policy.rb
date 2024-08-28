@@ -1,3 +1,4 @@
+# This file has several rubocop flags for indentation - seems like rubocop is installed but was never used
 class HabitEntryPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve

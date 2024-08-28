@@ -1,3 +1,5 @@
+# Might be helpful to have sample data that includes many more habits/habit entries
+# Doing this helps test how fast the page loads with a larger database
 desc 'Fill the database tables with some sample data'
 task({ sample_data: :environment }) do
   p 'Creating sample data'

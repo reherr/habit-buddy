@@ -10,7 +10,8 @@ class HabitEntriesController < ApplicationController
   # GET /habit_entries/1 or /habit_entries/1.json
   def show
     @habit_entry = HabitEntry.find(params[:id])
-    authorize @habit_entry
+    # all of these `authorize @habit_entry` lines should be removed because line 3 already takes care of that
+    # authorize @habit_entry
   end
 
   # GET /habit_entries/new
@@ -18,7 +19,7 @@ class HabitEntriesController < ApplicationController
     @habit_id = params[:habit_id]
     @habit_entry = HabitEntry.new(habit_id: @habit_id)
     @habit = Habit.find(@habit_id)
-    authorize @habit_entry
+    # authorize @habit_entry
 
     @breadcrumbs = [
       { content: @habit.name, href: habit_path(@habit) },
@@ -30,7 +31,7 @@ class HabitEntriesController < ApplicationController
   def edit
     habit_id = @habit_entry.habit_id
     @habit = Habit.find(habit_id)
-    authorize @habit_entry
+    # authorize @habit_entry
 
     @breadcrumbs = [
       { content: @habit.name, href: habit_path(@habit) },
@@ -42,7 +43,7 @@ class HabitEntriesController < ApplicationController
   def create
     @habit_entry = HabitEntry.new(habit_entry_params)
     @habit = Habit.find(@habit_entry.habit_id)
-    authorize @habit_entry
+    # authorize @habit_entry
 
     respond_to do |format|
       if @habit_entry.save
@@ -58,7 +59,7 @@ class HabitEntriesController < ApplicationController
   # PATCH/PUT /habit_entries/1 or /habit_entries/1.json
   def update
     @habit_entry = HabitEntry.find(params[:id])
-    authorize @habit_entry
+    # authorize @habit_entry
 
     respond_to do |format|
       if @habit_entry.update(habit_entry_params)
@@ -73,7 +74,7 @@ class HabitEntriesController < ApplicationController
 
   # DELETE /habit_entries/1 or /habit_entries/1.json
   def destroy
-    authorize @habit_entry
+    # authorize @habit_entry
     @habit_entry.destroy!
 
     respond_to do |format|
